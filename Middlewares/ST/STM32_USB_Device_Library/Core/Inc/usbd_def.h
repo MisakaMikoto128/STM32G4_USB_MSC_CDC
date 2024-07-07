@@ -62,7 +62,7 @@ extern "C" {
 #endif /*USBD_SELF_POWERED */
 
 #ifndef USBD_MAX_POWER
-#define USBD_MAX_POWER                                  0x32U /* 100 mA */
+#define USBD_MAX_POWER                                  0x64U /* 200 mA */
 #endif /* USBD_MAX_POWER */
 
 #ifndef USBD_SUPPORT_USER_STRING_DESC
@@ -281,6 +281,8 @@ typedef struct
   uint16_t bInterval;
 } USBD_EndpointTypeDef;
 
+#define USBD_CLASS_DATA_CAPACITY 4
+#define USBD_USER_DATA_CAPACITY 4
 /* USB Device handle structure */
 typedef struct _USBD_HandleTypeDef
 {
@@ -304,8 +306,10 @@ typedef struct _USBD_HandleTypeDef
   USBD_SetupReqTypedef    request;
   USBD_DescriptorsTypeDef *pDesc;
   USBD_ClassTypeDef       *pClass;
-  void                    *pClassData;
-  void                    *pUserData;
+  // void                    *pClassData;
+  // void                    *pUserData;
+  void                    *pClassDatas[USBD_CLASS_DATA_CAPACITY];
+  void                    *pUserDatas[USBD_USER_DATA_CAPACITY];
   void                    *pData;
   void                    *pBosDesc;
   void                    *pConfDesc;

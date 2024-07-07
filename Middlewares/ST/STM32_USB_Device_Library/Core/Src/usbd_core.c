@@ -101,8 +101,14 @@ USBD_StatusTypeDef USBD_Init(USBD_HandleTypeDef *pdev,
   }
 
   /* Unlink previous class resources */
-  pdev->pClass = NULL;
-  pdev->pUserData = NULL;
+  for(int i = 0; i < USBD_CLASS_DATA_CAPACITY; i++)
+  {
+    pdev->pClassDatas[i] = NULL;
+  }
+  for(int i = 0; i < USBD_USER_DATA_CAPACITY; i++)
+  {
+    pdev->pUserDatas[i] = NULL;
+  }
   pdev->pConfDesc = NULL;
 
   /* Assign USBD Descriptors */
@@ -142,7 +148,10 @@ USBD_StatusTypeDef USBD_DeInit(USBD_HandleTypeDef *pdev)
   {
     pdev->pClass->DeInit(pdev, (uint8_t)pdev->dev_config);
     pdev->pClass = NULL;
-    pdev->pUserData = NULL;
+    for(int i = 0; i < USBD_USER_DATA_CAPACITY; i++)
+    {
+      pdev->pUserDatas[i] = NULL;
+    }
   }
 
   /* Free Device descriptors resources */
@@ -500,7 +509,17 @@ USBD_StatusTypeDef USBD_LL_Reset(USBD_HandleTypeDef *pdev)
     return USBD_FAIL;
   }
 
-  if (pdev->pClassData != NULL)
+  int needDeInit = 0;
+  for(int i = 0; i < USBD_CLASS_DATA_CAPACITY; i++)
+  {
+    if(pdev->pClassDatas[i] != NULL)
+    {
+      needDeInit = 1;
+      break;
+    }
+  }
+  
+  if (needDeInit)
   {
     if (pdev->pClass->DeInit != NULL)
     {

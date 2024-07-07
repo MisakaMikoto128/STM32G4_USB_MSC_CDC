@@ -20,3 +20,5 @@ DFU.code-workspace
 MDK-ARM/*
 *.o
 *.d
+.eide/eide.json
+.eide/eide.json

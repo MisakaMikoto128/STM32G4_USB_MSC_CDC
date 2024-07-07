@@ -135,7 +135,7 @@ typedef  void (*pFunction)(void);
 /**********  Descriptor of DFU interface 0 Alternate setting n ****************/
 #define USBD_DFU_IF_DESC(n)           0x09,   /* bLength: Interface Descriptor size */ \
                                       USB_DESC_TYPE_INTERFACE,   /* bDescriptorType */ \
-                                      0x00,   /* bInterfaceNumber: Number of Interface */ \
+                                      0x01U,   /* bInterfaceNumber: Number of Interface */ \
                                       (n),      /* bAlternateSetting: Alternate setting */ \
                                       0x00,   /* bNumEndpoints*/ \
                                       0xFE,   /* bInterfaceClass: Application Specific Class Code */ \
@@ -210,11 +210,20 @@ extern USBD_ClassTypeDef USBD_DFU;
   * @}
   */
 
-/** @defgroup USB_CORE_Exported_Functions
-  * @{
-  */
-uint8_t USBD_DFU_RegisterMedia(USBD_HandleTypeDef *pdev,
-                               USBD_DFU_MediaTypeDef *fops);
+uint8_t USBD_DFU_Init(USBD_HandleTypeDef *pdev, uint8_t cfgidx);
+uint8_t USBD_DFU_DeInit(USBD_HandleTypeDef *pdev, uint8_t cfgidx);
+uint8_t USBD_DFU_Setup(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req);
+uint8_t USBD_DFU_EP0_RxReady(USBD_HandleTypeDef *pdev);
+uint8_t USBD_DFU_EP0_TxReady(USBD_HandleTypeDef *pdev);
+uint8_t USBD_DFU_SOF(USBD_HandleTypeDef *pdev);
+
+uint8_t *USBD_DFU_GetCfgDesc(uint16_t *length);
+uint8_t *USBD_DFU_GetDeviceQualifierDesc(uint16_t *length);
+
+#if (USBD_SUPPORT_USER_STRING_DESC == 1U)
+uint8_t *USBD_DFU_GetUsrStringDesc(USBD_HandleTypeDef *pdev,
+                                          uint8_t index, uint16_t *length);
+#endif
 /**
   * @}
   */
