@@ -845,6 +845,7 @@ uint8_t *USBD_CUD_GetDeviceQualifierDescriptor(uint16_t *length)
 
 #include "usbd_storage_if.h"
 #include "usbd_dfu_flash.h"
+#include "usbd_cdc_if.h"
 /**
  * @brief  USBD_CUD_Register
  * @param  fops: storage callback
@@ -854,6 +855,7 @@ uint8_t USBD_CUD_Register(USBD_HandleTypeDef *pdev)
 {
     pdev->pUserDatas[USBD_MSC_USERDATA_ID] = &USBD_Storage_Interface_fops_FS;
     pdev->pUserDatas[USBD_DFU_USERDATA_ID] = &USBD_DFU_Flash_fops;
+    pdev->pUserDatas[USBD_CDC_USERDATA_ID] = &USBD_Interface_fops_FS;
     return USBD_OK;
 }
 
