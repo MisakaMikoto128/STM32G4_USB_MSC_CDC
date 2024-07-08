@@ -86,7 +86,7 @@ static uint8_t USBD_CUD_EP0_RxReady(USBD_HandleTypeDef *pdev)
 {
     uint8_t res = 0;
     res         = USBD_CDC_EP0_RxReady(pdev);
-        res         = USBD_DFU_EP0_RxReady(pdev);
+    //     res         = USBD_DFU_EP0_RxReady(pdev);
     return res;
 }
 uint8_t USBD_CUD_DataIn(USBD_HandleTypeDef *pdev, uint8_t epnum);
@@ -714,7 +714,7 @@ __ALIGN_BEGIN static uint8_t USBD_CUD_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
 uint8_t USBD_CUD_Init(USBD_HandleTypeDef *pdev, uint8_t cfgidx)
 {
     uint8_t res = 0;
-        res         = USBD_DFU_Init(pdev, cfgidx);
+    //     res         = USBD_DFU_Init(pdev, cfgidx);
     res = USBD_MSC_Init(pdev, cfgidx);
     res = USBD_CDC_Init(pdev, cfgidx);
     return res;
@@ -730,7 +730,7 @@ uint8_t USBD_CUD_Init(USBD_HandleTypeDef *pdev, uint8_t cfgidx)
 uint8_t USBD_CUD_DeInit(USBD_HandleTypeDef *pdev, uint8_t cfgidx)
 {
     uint8_t res = 0;
-        res         = USBD_DFU_DeInit(pdev, cfgidx);
+    //     res         = USBD_DFU_DeInit(pdev, cfgidx);
     res = USBD_MSC_DeInit(pdev, cfgidx);
     res = USBD_CDC_DeInit(pdev, cfgidx);
     return res;
@@ -751,9 +751,9 @@ uint8_t USBD_CUD_Setup(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req)
         case USBD_MSC_INTERFACE_NUM:
             res = USBD_MSC_Setup(pdev, req);
             break;
-        case USBD_DFU_INTERFACE_NUM:
-            res = USBD_DFU_Setup(pdev, req);
-            break;
+        // case USBD_DFU_INTERFACE_NUM:
+        //     res = USBD_DFU_Setup(pdev, req);
+        //     break;
         case USBD_CDC_INTERFACE_NUM:
             res = USBD_CDC_Setup(pdev, req);
             break;
