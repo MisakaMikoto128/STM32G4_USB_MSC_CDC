@@ -31,6 +31,7 @@ extern "C" {
 #include "usbd_ioreq.h"
 #include "usbd_msc.h"
 #include "usbd_dfu.h"
+#include "usbd_cdc.h"
 #include "usbd_composite.h"
 
 /** @addtogroup USBD_CUD_BOT

@@ -74,6 +74,10 @@
 // #define USBD_CONFIGURATION_STRING     "DFU Config"
 // #define USBD_INTERFACE_STRING     "DFU Interface"
 
+// #define USBD_PID     22336
+// #define USBD_PRODUCT_STRING     "STM32 Virtual ComPort"
+// #define USBD_CONFIGURATION_STRING     "CDC Config"
+// #define USBD_INTERFACE_STRING     "CDC Interface"
 /* USER CODE BEGIN PRIVATE_DEFINES */
 
 /* USER CODE END PRIVATE_DEFINES */
