@@ -51,11 +51,21 @@ extern "C" {
 #define CUD_MEDIA_PACKET 512U
 #endif /* CUD_MEDIA_PACKET */
 
-#define CUD_MAX_FS_PACKET       0x40U
-#define CUD_MAX_HS_PACKET       0x200U
+#define CUD_MAX_FS_PACKET 0x40U
+#define CUD_MAX_HS_PACKET 0x200U
 
-#define CUD_EPIN_ADDR           0x81U
-#define CUD_EPOUT_ADDR          0x01U
+#include "usbd_desc.h"
+
+#define ENBALE_DUF_CFGDESC 0
+
+// #define MSC_CDC_CFG_IDX 0x00
+// #define DFU_CFG_IDX     0x01
+
+#define USBD_INTERFACE_NUM      0x03U //使用的接口数量
+#define USBD_MSC_INTERFACE_NUM  0x00U //MSC接口号
+#define USBD_CDC_INTERFACE_NUM  0x01U //CDC接口号
+
+#define USB_CUD_CONFIG_DESC_SIZ (9 + 8 + (USB_MSC_CONFIG_DESC_SIZ - 9) + (USB_CDC_CONFIG_DESC_SIZ - 9))
 
 /* Structure for CUD process */
 extern USBD_ClassTypeDef USBD_CUD;
