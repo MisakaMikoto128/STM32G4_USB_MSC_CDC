@@ -135,7 +135,7 @@ typedef  void (*pFunction)(void);
 /**********  Descriptor of DFU interface 0 Alternate setting n ****************/
 #define USBD_DFU_IF_DESC(n)           0x09,   /* bLength: Interface Descriptor size */ \
                                       USB_DESC_TYPE_INTERFACE,   /* bDescriptorType */ \
-                                      0x01U,   /* bInterfaceNumber: Number of Interface */ \
+                                      0x00U,   /* bInterfaceNumber: Number of Interface */ \
                                       (n),      /* bAlternateSetting: Alternate setting */ \
                                       0x00,   /* bNumEndpoints*/ \
                                       0xFE,   /* bInterfaceClass: Application Specific Class Code */ \

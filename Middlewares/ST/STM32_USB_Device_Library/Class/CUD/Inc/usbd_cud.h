@@ -53,8 +53,6 @@ extern "C" {
 #define CUD_MAX_FS_PACKET       0x40U
 #define CUD_MAX_HS_PACKET       0x200U
 
-#define USB_CUD_CONFIG_DESC_SIZ (USB_MSC_CONFIG_DESC_SIZ + USB_DFU_CONFIG_DESC_SIZ)
-
 #define CUD_EPIN_ADDR           0x81U
 #define CUD_EPOUT_ADDR          0x01U
 

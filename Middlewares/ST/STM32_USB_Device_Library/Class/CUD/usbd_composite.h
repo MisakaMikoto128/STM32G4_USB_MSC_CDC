@@ -19,14 +19,17 @@ extern "C" {
 #include <stdint.h>
 #include <stdbool.h>
 #include "usbd_desc.h"
-#define USBD_MSC_INTERFACE_NUM 0x00U
-#define USBD_DFU_INTERFACE_NUM 0x01U
+
 #define USBD_INTERFACE_NUM     0x02U
 
-#define USBD_MSC_CLASS_ID      0x00U
-#define USBD_DFU_CLASS_ID      0x01U
-#define USBD_MSC_USERDATA_ID   0x00U
-#define USBD_DFU_USERDATA_ID   0x01U
+#define USBD_DFU_CLASS_ID      0x00U
+#define USBD_MSC_CLASS_ID      0x01U
+#define USBD_DFU_USERDATA_ID   0x00U
+#define USBD_MSC_USERDATA_ID   0x01U
+#define USBD_DFU_INTERFACE_NUM 0x00U
+#define USBD_MSC_INTERFACE_NUM 0x01U
+
+#define USB_CUD_CONFIG_DESC_SIZ (9 + (USB_MSC_CONFIG_DESC_SIZ - 9) + (USB_DFU_CONFIG_DESC_SIZ - 9))
 #ifdef __cplusplus
 }
 #endif

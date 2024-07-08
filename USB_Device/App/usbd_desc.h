@@ -103,8 +103,8 @@
   * @brief Public variables.
   * @{
   */
-extern USBD_DescriptorsTypeDef     FS_Desc;
-
+extern USBD_DescriptorsTypeDef     MSC_Desc;
+extern USBD_DescriptorsTypeDef     DFU_Desc;
 /* USER CODE BEGIN EXPORTED_VARIABLES */
 
 /* USER CODE END EXPORTED_VARIABLES */
